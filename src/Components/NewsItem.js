@@ -5,7 +5,7 @@ class NewsItem extends React.Component {
     render() {
         return (
             <li className="News">
-                {this.props.news}
+                <a href={"/story/"+this.props.news}>{this.props.news}</a>
             </li>
         );
     };
