@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import news from './NewsReducer';
+import story from './StoryReducer';
 
 export default combineReducers({
-    news
+    story
 });

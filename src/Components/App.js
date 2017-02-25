@@ -1,15 +1,13 @@
 import React from 'react';
 
-import uuid from 'uuid';
-
 import { connect } from 'react-redux';
 
 import Navbar from './Navbar';
 import Footer from './Footer';
-import NewsList from './NewsList';
+import StoryList from './StoryList';
 import Story from './Story';
 
-import { fetchNews } from '../Redux/Actions/NewsActions';
+import { fetchStories } from '../Redux/Actions/StoryActions';
 
 import { Route } from 'react-router-dom';
 
@@ -18,38 +16,22 @@ class App extends React.Component{
     constructor() {
         super();
         this.state = {
-            news: []
+            stories: []
         }
     }
 
-    getNews() {
+    getStories() {
         this.setState({
-            news: [
-                {
-                    id: uuid.v4(),
-                    title: "First title",
-                    category: "Funny"
-                },
-                {
-                    id: uuid.v4(),
-                    title: "All about them",
-                    category: "Sad"
-                },
-                {
-                    id: uuid.v4(),
-                    title: "There was a bridge",
-                    category: "Architecture"
-                }
-            ]
+            stories: []
         });
     }
 
     componentWillMount() {
-        this.props.dispatch(fetchNews());
+        this.props.dispatch(fetchStories());
     }
 
     componentDidMount() {
-        this.getNews();
+        this.getStories();
     }
 
     render() {
@@ -58,7 +40,7 @@ class App extends React.Component{
                 <Navbar />
 
                 <Route exact={true} path="/" render={() => {
-                     return <NewsList news={this.props.news} title="Top stories" />
+                     return <StoryList stories={this.props.stories} title="Top stories" />
                 }} />
                 <Route path="/story/:storyId" component={Story} />
 
@@ -72,6 +54,6 @@ class App extends React.Component{
 export default connect(
     store => {
         return {
-            news: store.news.news
+            stories: store.story.stories
         }
     })(App);

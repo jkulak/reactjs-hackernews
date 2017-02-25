@@ -1,22 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class NewsItem extends React.Component {
+class StoryItem extends React.Component {
 
     render() {
         return (
-            <li className="News">
-                <Link to={`/story/${this.props.news}`} >
-                    {this.props.news}
+            <li className="Story">
+                <Link to={`/story/${this.props.story}`} >
+                    {this.props.story}
                 </Link>
             </li>
         );
     };
 }
 
-NewsItem.propTypes = {
+StoryItem.propTypes = {
     // user: React.PropTypes.object,
     // onDelete: React.PropTypes.func
 }
 
-export default NewsItem;
+export default StoryItem;
