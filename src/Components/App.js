@@ -7,8 +7,11 @@ import { connect } from 'react-redux';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import NewsList from './NewsList';
+import Story from './Story';
 
 import { fetchNews } from '../Redux/Actions/NewsActions';
+
+import { Route } from 'react-router-dom';
 
 class App extends React.Component{
 
@@ -53,8 +56,14 @@ class App extends React.Component{
         return (
             <div>
                 <Navbar />
-                <NewsList news={this.props.news} title="Top stories"/>
+
+                <Route exact={true} path="/" render={() => {
+                     return <NewsList news={this.props.news} title="Top stories" />
+                }} />
+                <Route path="/story/:storyId" component={Story} />
+
                 <Footer />
+
             </div>
         );
     }

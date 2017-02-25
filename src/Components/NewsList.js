@@ -9,7 +9,7 @@ class NewsList extends React.Component{
         if (this.props.news) {
             newsItems = this.props.news.map(elem => {
                 return (
-                    <NewsItem key={elem.id} news={elem} />
+                    <NewsItem key={elem} news={elem} />
                 )
             });
         }

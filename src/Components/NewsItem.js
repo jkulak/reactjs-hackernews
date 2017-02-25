@@ -1,11 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class NewsItem extends React.Component {
 
     render() {
         return (
             <li className="News">
-                <a href={"/story/"+this.props.news}>{this.props.news}</a>
+                <Link to={`/story/${this.props.news}`} >
+                    {this.props.news}
+                </Link>
             </li>
         );
     };
